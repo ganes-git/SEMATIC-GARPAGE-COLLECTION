@@ -20,21 +20,23 @@ export function StudyCard({ card, isFlipped, onFlip }: StudyCardProps) {
             >
                 {/* Front */}
                 <div className={cn(
-                    "absolute inset-0 backface-hidden w-full h-full bg-card rounded-xl border flex flex-col items-center justify-center p-8 text-center",
-                    "hover:border-primary/50 transition-colors"
-                )}>
-                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Question</span>
-                    <h2 className="text-3xl font-semibold leading-relaxed">{card.front}</h2>
-                    <div className="absolute bottom-6 text-xs text-muted-foreground">Click or Space to flip</div>
+                    "absolute inset-0 backface-hidden w-full h-full bg-card/80 backdrop-blur-xl rounded-xl border-2 border-border/50 flex flex-col items-center justify-center p-8 text-center shadow-2xl",
+                    "group-hover:border-primary/50 transition-colors"
+                )} style={{ backfaceVisibility: 'hidden' }}>
+                    <div className="absolute top-6 left-6 w-12 h-1 bg-gradient-to-r from-primary to-transparent rounded-full opacity-50" />
+                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-6">Question</span>
+                    <h2 className="text-3xl font-bold leading-relaxed text-balance">{card.front}</h2>
+                    <div className="absolute bottom-6 text-xs text-muted-foreground font-mono bg-muted/50 px-3 py-1 rounded-full">SPACE to flip</div>
                 </div>
 
                 {/* Back */}
                 <div
-                    className="absolute inset-0 backface-hidden w-full h-full bg-primary/5 rounded-xl border border-primary/20 flex flex-col items-center justify-center p-8 text-center"
-                    style={{ transform: 'rotateY(180deg)' }}
+                    className="absolute inset-0 backface-hidden w-full h-full bg-gradient-to-br from-primary/5 to-purple-500/5 backdrop-blur-xl rounded-xl border-2 border-primary/20 flex flex-col items-center justify-center p-8 text-center shadow-2xl"
+                    style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}
                 >
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Answer</span>
-                    <p className="text-2xl leading-relaxed">{card.back}</p>
+                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary to-purple-500" />
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest mb-6">Answer</span>
+                    <p className="text-2xl font-medium leading-relaxed text-balance">{card.back}</p>
                 </div>
             </motion.div>
         </div>
