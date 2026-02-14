@@ -5,7 +5,7 @@ import { StudyCard } from '@/components/StudyCard';
 import { Button } from '@/components/ui/button';
 import { useStudyStore } from '@/hooks/useStudyStore';
 import { calculateSM2 } from '@/algorithms/sm2';
-import { Play, Pause, RotateCcw, CheckCircle2, X } from 'lucide-react';
+import { Play, Pause, CheckCircle2, X } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Link } from 'react-router-dom';
 
@@ -17,11 +17,10 @@ const MOCK_CARDS: CardType[] = [
 ];
 
 export default function StudySession() {
-    const { timeLeft, isActive, toggleTimer, resetTimer } = useStudyStore((state) => ({
+    const { timeLeft, isActive, toggleTimer } = useStudyStore((state) => ({
         timeLeft: state.timeLeft,
         isActive: state.isActive,
         toggleTimer: state.isActive ? state.pauseTimer : state.startTimer,
-        resetTimer: state.resetTimer,
     }));
     const tick = useStudyStore(state => state.tick);
 

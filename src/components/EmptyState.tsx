@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { PlusCircle, Search } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 
 interface EmptyStateProps {
     title: string;

@@ -128,7 +128,7 @@ export default function Dashboard() {
                                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
                                 />
                                 <Bar dataKey="attempts" radius={[8, 8, 0, 0]}>
-                                    {studyData.map((entry, index) => (
+                                    {studyData.map((_, index) => (
                                         <Cell key={`cell-${index}`} fill={index === 4 ? "url(#colorAttempts)" : "hsl(var(--muted))"} />
                                     ))}
                                 </Bar>
