@@ -17,11 +17,13 @@ const MOCK_CARDS: CardType[] = [
 ];
 
 export default function StudySession() {
-    const { timeLeft, isActive, toggleTimer } = useStudyStore((state) => ({
-        timeLeft: state.timeLeft,
-        isActive: state.isActive,
-        toggleTimer: state.isActive ? state.pauseTimer : state.startTimer,
-    }));
+    const timeLeft = useStudyStore(state => state.timeLeft);
+    const isActive = useStudyStore(state => state.isActive);
+    const startTimer = useStudyStore(state => state.startTimer);
+    const pauseTimer = useStudyStore(state => state.pauseTimer);
+
+    // Derived state
+    const toggleTimer = isActive ? pauseTimer : startTimer;
     const tick = useStudyStore(state => state.tick);
 
     const [queue] = useState<CardType[]>(MOCK_CARDS);
