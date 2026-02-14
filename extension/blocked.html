@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowState: Access Denied</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      font-size: 1.5rem;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Focus Mode Active</h1>
+    <p>You promised yourself you'd study. Don't break the streak!</p>
+    <p>"Success is the sum of small efforts, repeated day in and day out."</p>
+    <br>
+    <a href="#" class="btn" onclick="window.history.back()">Go Back to Work</a>
+  </div>
+  <script>
+    // Increment distraction attempt counter
+    chrome.storage.local.get(['distractionCount'], function(result) {
+      const newCount = (result.distractionCount || 0) + 1;
+      chrome.storage.local.set({ distractionCount: newCount });
+    });
+  </script>
+</body>
+</html>
